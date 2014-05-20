@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<birds>
+    
+    <bird>
+        <id>1</id>    
+        <title>Sparrow</title>
+        <artist>Adele</artist>
+        <duration>1</duration>
+        <options>sparrow1,sparrow2,sparrow3</options>
+		<thumb_url>http://images.nationalgeographic.com/wpf/media-live/photos/000/171/overrides/house-sparrow_17170_600x450.jpg</thumb_url>
+    </bird>
+    
+    <bird>
+        <id>2</id>    
+        <title>Pigeon</title>
+        <artist>Adele</artist>
+        <duration>1</duration>
+        <options>Pigeon 1,Pigeon 2,Pigeon 3</options>
+		<thumb_url>http://www.warrenphotographic.co.uk/photography/bigs/00489-Street-Pigeon-white-background.jpg</thumb_url>
+    </bird>
+    
+    
+    <bird>
+        <id>3</id>    
+        <title>Oriole</title>
+        <artist>Adele</artist>
+        <duration>1</duration>
+        <options>Oriole 1 ,Oriole 2 ,Oriole 3</options>
+		<thumb_url>http://birds.audubon.org/sites/default/files/imagecache/bird-half/species_images/Baltimore_Oriole_s52-11-018_l_0.jpg</thumb_url>
+    </bird>
+    
+</birds>

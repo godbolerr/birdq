@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<birds>
+    
+    <bird>
+        <id>1</id>    
+        <name>Sparrow</name>
+        <alternatives>sparrow1,sparrow2,sparrow3</alternatives>
+		<picUrl>http://images.nationalgeographic.com/wpf/media-live/photos/000/171/overrides/house-sparrow_17170_600x450.jpg</picUrl>
+    </bird>
+    
+    <bird>
+        <id>2</id>    
+        <name>Pigeon</name>
+        <alternative>Pigeon 1,Pigeon 2,Pigeon 3</alternative>
+		<picUrl>http://www.warrenphotographic.co.uk/photography/bigs/00489-Street-Pigeon-white-background.jpg</picUrl>
+    </bird>
+    
+    
+    <bird>
+        <id>3</id>    
+        <name>Oriole</name>
+        <alternatives>Oriole 1 ,Oriole 2 ,Oriole 3</alternatives>
+		<picUrl>http://birds.audubon.org/sites/default/files/imagecache/bird-half/species_images/Baltimore_Oriole_s52-11-018_l_0.jpg</picUrl>
+    </bird>
+    
+</birds>
