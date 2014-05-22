@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 		protected String doInBackground(String... urls) {
 
 			BirdInfoDatabase
-					.init("http://birdinfoquiz.appspot.com/xml/bird1.xml");
+					.init("http://birdinfoquiz.appspot.com/xml/en/getbirds");
 
 			return "Retrieved " + BirdInfoDatabase.birds.size();
 

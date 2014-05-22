@@ -18,6 +18,8 @@ public class BirdInfo {
 	
 	String name;
 	
+	String englishName;
+	
 	String pictUrl;
 	
 	Map<String,String> names;
@@ -100,6 +102,16 @@ public class BirdInfo {
 	public List<String> getAlternatives(String key){
 		
 		return alternative.get(key);
+	}
+
+
+	public String getEnglishName() {
+		return englishName;
+	}
+
+
+	public void setEnglishName(String englishName) {
+		this.englishName = englishName;
 	}
 	
 

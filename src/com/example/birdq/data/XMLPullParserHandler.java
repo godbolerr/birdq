@@ -32,8 +32,9 @@ public class XMLPullParserHandler {
 			factory = XmlPullParserFactory.newInstance();
 			factory.setNamespaceAware(true);
 			parser = factory.newPullParser();
+			parser.setInput(is,"UTF-8");
 
-			parser.setInput(is, null);
+			//parser.setInput(is, null);
 
 			int eventType = parser.getEventType();
 			while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -54,6 +55,8 @@ public class XMLPullParserHandler {
 					if (tagname.equalsIgnoreCase("bird")) {
 						// add birdInfo object to list
 						birdInfos.add(birdInfo);
+					} else if (tagname.equalsIgnoreCase("englishName")) {
+						birdInfo.setEnglishName(text);
 					} else if (tagname.equalsIgnoreCase("name")) {
 						birdInfo.setName(text);
 					} else if (tagname.equalsIgnoreCase("id")) {
