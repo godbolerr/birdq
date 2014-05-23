@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+ 
+    <PreferenceCategory android:title="@string/pref_user_profile" >
+        <EditTextPreference
+                android:title="@string/pref_user_name"
+                android:summary="@string/pref_user_name_summary"
+                android:key="prefUsername"/>
+    </PreferenceCategory>
+     
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+       
+        <ListPreference
+            android:key="noOfRecordsPerQuiz"
+            android:entries="@array/noOfRecordsPerQuiz"
+            android:summary="@string/noOfRecordsPerQuizSummary"
+            android:entryValues="@array/noOfRecordsPerQuizValues"
+            android:title="@string/noOfRecordsPerQuiz" />
+        
+        
+        <ListPreference
+            android:key="quizLang"
+            android:entries="@array/quizLang"
+            android:summary="@string/quizLangSummary"
+            android:entryValues="@array/quizLangValues"
+            android:title="@string/quizLang" />
+        
+        
+    </PreferenceCategory>
+ 
+</PreferenceScreen>

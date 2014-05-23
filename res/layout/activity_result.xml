@@ -18,15 +18,7 @@
         android:onClick="onQuit"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/restart"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onReset"
-            android:text="Start Again" />
-
        
-
         <android.widget.TextView
             android:id="@+id/resultText"
             android:layout_width="wrap_content"
@@ -37,10 +29,19 @@
         <ListView
             android:id="@+id/list"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="167dp"
             android:divider="#b5b5b5"
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector" />
     </LinearLayout>
+
+   <Button
+       android:id="@+id/restart"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/linearLayout1"
+       android:layout_below="@+id/linearLayout1"
+       android:onClick="onReset"
+       android:text="Start Again" />
 
 </RelativeLayout>

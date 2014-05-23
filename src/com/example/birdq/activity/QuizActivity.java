@@ -1,14 +1,21 @@
 package com.example.birdq.activity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,8 +42,6 @@ public class QuizActivity extends Activity {
 
 	public static ResultManager resultManager;
 	
-	public static final String bUrl  = "http://birdinfoquiz.appspot.com/xml/bird1.xml";
-
 	
 	static int currentRow = 0;
 
@@ -54,6 +59,27 @@ public class QuizActivity extends Activity {
 		
 		
 		birds = BirdInfoDatabase.birds;
+		
+
+		 SharedPreferences sharedPrefs = PreferenceManager
+	                .getDefaultSharedPreferences(this);
+		
+		 String recordsPerQuiz =  sharedPrefs.getString("noOfRecordsPerQuiz","5");
+		 
+		 int noOfRecordsPerQuiz = Integer.parseInt(recordsPerQuiz);
+		 
+		 List<BirdInfo> newList = new ArrayList<BirdInfo>();
+		 
+		 if ( birds.size() > noOfRecordsPerQuiz ){
+			 
+			 for (int i = 0; i < noOfRecordsPerQuiz; i++) {
+				newList.add(birds.get(i));
+			}
+			 
+			 BirdInfoDatabase.birds = newList;
+			 birds = newList;
+		 }
+		
 
 		imageLoader = new ImageLoader(this.getApplicationContext());
 
@@ -118,33 +144,52 @@ public class QuizActivity extends Activity {
 		BirdInfo thisInfo = birds.get(currentCount);
 
 		TextView birdIdView = (TextView) findViewById(R.id.birdId);
-
+		ImageView iView = (ImageView) findViewById(R.id.displayImage);
+		RadioButton rb1 = (RadioButton) findViewById(R.id.radioButton1);
+		RadioButton rb2 = (RadioButton) findViewById(R.id.radioButton2);
+		RadioButton rb3 = (RadioButton) findViewById(R.id.radioButton3);
+		
+		
+		
 		birdIdView.setText(thisInfo.getId());
 
-		ImageView iView = (ImageView) findViewById(R.id.displayImage);
+		
 
 		imageLoader.DisplayImage(thisInfo.getPictUrl(), iView);
 
 		List<String> alternatives = thisInfo.getAlternatives("en");
-
-		RadioButton rb1 = (RadioButton) findViewById(R.id.radioButton1);
-
-		rb1.setText(thisInfo.getName());
-
-		RadioButton rb2 = (RadioButton) findViewById(R.id.radioButton2);
-
-		rb2.setText(alternatives.get(0));
-
-		RadioButton rb3 = (RadioButton) findViewById(R.id.radioButton3);
-
-		rb3.setText(alternatives.get(1));
-
-		// RadioGroup rGroup = (RadioGroup) findViewById(R.id.radioAnswerGroup);
-
-		// if ( currentCount > 0 ){
-		// // rGroup.check(id)
-		// //rGroup.clearCheck();
-		// }
+		
+		String opt1 = alternatives.get(0) ;
+		String opt2 = alternatives.get(1);
+		
+		
+		if ( opt1 == null ) {
+			opt1 = "NA";
+		}
+		if ( opt2 == null ) {
+			opt2 = "NA";
+		}
+		
+	
+		
+		// Lets randomize alternatives
+		
+		Map<String,String> aMap = new HashMap<String,String>();
+		
+		aMap.put(UUID.randomUUID().toString(),opt1 );
+		aMap.put(UUID.randomUUID().toString(),opt2 );
+		aMap.put(UUID.randomUUID().toString(),thisInfo.getName() );
+		
+		List<String> newValues = new ArrayList<String>();
+		
+		for (Iterator<String> iterator = aMap.values().iterator(); iterator.hasNext();) {
+			String value = (String) iterator.next();
+			newValues.add(value);
+		}
+		
+		rb1.setText(newValues.get(0));
+		rb2.setText(newValues.get(1));
+		rb3.setText(newValues.get(2));
 
 		currentCount++;
 

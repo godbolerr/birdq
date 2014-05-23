@@ -4,27 +4,66 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.birdq.activity.QuizActivity;
+import com.example.birdq.activity.UserSettingActivity;
 import com.example.birdq.data.BirdInfoDatabase;
 
 public class MainActivity extends Activity {
 
 	ProgressDialog myProgressDialog = null;
+	
+	private static final int RESULT_SETTINGS = 1;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 
 	}
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+ 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+ 
+        case R.id.menu_settings:
+            Intent i = new Intent(this, UserSettingActivity.class);
+            startActivityForResult(i, RESULT_SETTINGS);
+            break;
+ 
+        }
+ 
+        return true;
+    }	
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    
+	
 	public void marathiClick(View v) {
 
 		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -63,11 +102,27 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-
+			
+			
+			
+			 SharedPreferences sharedPrefs = PreferenceManager
+		                .getDefaultSharedPreferences(mActivity);
+			
+			 
+			String lang =  sharedPrefs.getString("quizLang", "en");
+			
+			
 			BirdInfoDatabase
-					.init("http://birdinfoquiz.appspot.com/xml/en/getbirds");
+					.init("http://birdinfoquiz.appspot.com/xml/"+lang+"/getbirds");
 
-			return "Retrieved " + BirdInfoDatabase.birds.size();
+			
+			
+	       
+			
+			
+			
+			
+	        return "Retrieved " + BirdInfoDatabase.birds.size();
 
 		}
 
@@ -81,4 +136,5 @@ public class MainActivity extends Activity {
 			startActivity(nextScreen);
 		}
 	}
+	
 }

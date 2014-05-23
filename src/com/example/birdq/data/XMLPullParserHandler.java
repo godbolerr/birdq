@@ -12,6 +12,14 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class XMLPullParserHandler {
 	
+	public static final String BIRD = "b";
+	public static final String ID = "id";
+	public static final String ID_START = "<id>";
+	public static final String NAME = "name";
+	public static final String URL = "url";	
+	public static final String ENGNAME = "eName";
+	public static final String ALTERNATIVE = "alt";
+
 	
 	List<BirdInfo> birdInfos;
 	private BirdInfo birdInfo;
@@ -34,14 +42,12 @@ public class XMLPullParserHandler {
 			parser = factory.newPullParser();
 			parser.setInput(is,"UTF-8");
 
-			//parser.setInput(is, null);
-
 			int eventType = parser.getEventType();
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				String tagname = parser.getName();
 				switch (eventType) {
 				case XmlPullParser.START_TAG:
-					if (tagname.equalsIgnoreCase("bird")) {
+					if (tagname.equalsIgnoreCase(BIRD)) {
 						// create a new instance of birdInfo
 						birdInfo = new BirdInfo();
 					}
@@ -52,18 +58,18 @@ public class XMLPullParserHandler {
 					break;
 
 				case XmlPullParser.END_TAG:
-					if (tagname.equalsIgnoreCase("bird")) {
+					if (tagname.equalsIgnoreCase(BIRD)) {
 						// add birdInfo object to list
 						birdInfos.add(birdInfo);
-					} else if (tagname.equalsIgnoreCase("englishName")) {
+					} else if (tagname.equalsIgnoreCase(ENGNAME)) {
 						birdInfo.setEnglishName(text);
-					} else if (tagname.equalsIgnoreCase("name")) {
+					} else if (tagname.equalsIgnoreCase(NAME)) {
 						birdInfo.setName(text);
-					} else if (tagname.equalsIgnoreCase("id")) {
+					} else if (tagname.equalsIgnoreCase(ID)) {
 						birdInfo.setId(text);
-					} else if (tagname.equalsIgnoreCase("picUrl")) {
+					} else if (tagname.equalsIgnoreCase(URL)) {
 						birdInfo.setPictUrl(text);
-					} else if (tagname.equalsIgnoreCase("alternatives")) {
+					} else if (tagname.equalsIgnoreCase(ALTERNATIVE)) {
 
 						StringTokenizer stk = new StringTokenizer(text, ",");
 

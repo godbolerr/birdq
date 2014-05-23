@@ -38,7 +38,8 @@ public class ResultActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_result);
+		
+		setContentView(R.layout.final_result);
 
 		list = (ListView) findViewById(R.id.list);
 

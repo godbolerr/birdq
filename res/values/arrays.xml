@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="noOfRecordsPerQuiz">
+        <item name="5">Five</item>
+        <item name="10">Ten</item>
+        <item name="15">Fifteen</item>
+
+    </string-array>
+    <string-array name="noOfRecordsPerQuizValues">
+        <item name="5">5</item>
+        <item name="10">10</item>
+        <item name="15">15</item>
+    </string-array>
+    
+    <string-array name="quizLang">
+        <item name="en">English</item>
+        <item name="mr">Marathi</item>
+
+    </string-array>
+    <string-array name="quizLangValues">
+        <item name="en">English</item>
+        <item name="mr">Marathi</item>
+    </string-array>    
+     
+</resources>
