@@ -3,6 +3,7 @@
  */
 package com.example.birdq.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,12 @@ public class BirdInfo {
 	
 	Map<String,String> names;
 	
-	Map<String,List<String>> alternative;
+	List<String> options;
 	
 	
 	public BirdInfo(String id, String name,String url) {
 		names = new HashMap<String,String>();
-		alternative = new HashMap<String,List<String>>();
+		options = new ArrayList<String>();
 		this.id = id;
 		this.name = name;
 		this.pictUrl = url;
@@ -41,7 +42,7 @@ public class BirdInfo {
 	 */
 	public BirdInfo() {
 		names = new HashMap<String,String>();
-		alternative = new HashMap<String,List<String>>();
+		options = new ArrayList<String>();
 	}
 
 
@@ -92,18 +93,6 @@ public class BirdInfo {
 		this.names = names;
 	}
 	
-	
-	public void addAlternative(String key,List<String> value){
-		
-		alternative.put(key, value);
-		
-	}
-	
-	public List<String> getAlternatives(String key){
-		
-		return alternative.get(key);
-	}
-
 
 	public String getEnglishName() {
 		return englishName;
@@ -112,6 +101,19 @@ public class BirdInfo {
 
 	public void setEnglishName(String englishName) {
 		this.englishName = englishName;
+	}
+
+
+	public List<String> getOptions() {
+		return options;
+	}
+
+	public void addOption(String option){
+		options.add(option);
+	}
+
+	public void setOptions(List<String> options) {
+		this.options = options;
 	}
 	
 

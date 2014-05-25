@@ -73,13 +73,16 @@ public class XMLPullParserHandler {
 
 						StringTokenizer stk = new StringTokenizer(text, ",");
 
-						ArrayList<String> names = new ArrayList<String>();
-
 						while (stk.hasMoreTokens()) {
-							names.add(stk.nextToken());
+							birdInfo.addOption(stk.nextToken());
 						}
 
-						birdInfo.addAlternative("en", names);
+						if ( birdInfo.options.size() != 2 ) {
+							birdInfo.setOptions(new ArrayList<String>());
+							birdInfo.addOption("Data entry error");
+							birdInfo.addOption("Data entry error");
+						}
+						
 					}
 					break;
 

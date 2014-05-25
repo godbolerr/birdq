@@ -6,6 +6,12 @@
                 android:title="@string/pref_user_name"
                 android:summary="@string/pref_user_name_summary"
                 android:key="prefUsername"/>
+        
+          <EditTextPreference
+                android:title="@string/appUrl"
+                android:summary="@string/appUrlSummary"
+                android:key="appUrl"/>
+                
     </PreferenceCategory>
      
     <PreferenceCategory android:title="@string/pref_update_setting" >

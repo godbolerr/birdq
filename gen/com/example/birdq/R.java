@@ -39,17 +39,19 @@ public final class R {
         public static final int wrong=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0011;
-        public static final int answerStatus=0x7f0b0010;
-        public static final int artist=0x7f0b000e;
+        public static final int action_settings=0x7f0b0012;
+        public static final int answer=0x7f0b000e;
+        public static final int answerStatus=0x7f0b0011;
         public static final int birdId=0x7f0b0006;
+        public static final int birdName=0x7f0b000d;
+        public static final int count=0x7f0b0010;
         public static final int displayImage=0x7f0b0005;
-        public static final int duration=0x7f0b000f;
+        public static final int englishName=0x7f0b000f;
         public static final int linearLayout1=0x7f0b0007;
         public static final int list=0x7f0b0009;
         public static final int list_image=0x7f0b000c;
         public static final int marathiBtn=0x7f0b0001;
-        public static final int menu_settings=0x7f0b0012;
+        public static final int menu_settings=0x7f0b0013;
         public static final int radioButton1=0x7f0b0002;
         public static final int radioButton2=0x7f0b0003;
         public static final int radioButton3=0x7f0b0004;
@@ -57,7 +59,6 @@ public final class R {
         public static final int resultText=0x7f0b0008;
         public static final int textView1=0x7f0b0000;
         public static final int thumbnail=0x7f0b000b;
-        public static final int title=0x7f0b000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -75,6 +76,8 @@ public final class R {
     public static final class string {
         public static final int GuessBird=0x7f080005;
         public static final int action_settings=0x7f080001;
+        public static final int appUrl=0x7f080017;
+        public static final int appUrlSummary=0x7f080018;
         public static final int app_name=0x7f080000;
         public static final int english=0x7f080004;
         public static final int englishStart=0x7f080009;

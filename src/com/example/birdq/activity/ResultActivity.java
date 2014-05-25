@@ -21,16 +21,17 @@ import com.example.birdq.data.BirdInfoDatabase;
 import com.example.birdq.data.ResultManager;
 
 public class ResultActivity extends Activity {
-	// All static variables
-	static final String URL = "http://api.androidhive.info/music/music.xml";
+
 	// XML node keys
-	public static final String KEY_SONG = "song"; // parent node
 	public static final String KEY_ID = "id";
-	public static final String KEY_TITLE = "title";
-	public static final String KEY_ARTIST = "artist";
-	public static final String KEY_DURATION = "duration";
+	public static final String BIRD_NAME = "birdName";
+	public static final String ANSWER = "answer";
+	public static final String KEY_COUNT = "count";
 	public static final String KEY_THUMB_URL = "thumb_url";
 	public static final String ANSWER_STATUS = "answerStatus";
+	public static final String ENGLISH_NAME = "englishName";
+	
+	
 
 	ListView list;
 	BirdAdapter adapter;
@@ -53,7 +54,7 @@ public class ResultActivity extends Activity {
 
 		ResultManager rm = QuizActivity.getResultManager();
 
-		List<BirdInfo> bList = BirdInfoDatabase.birds;
+		List<BirdInfo> bList = BirdInfoDatabase.currentList;
 
 		Map<String, String> answerMap = rm.getAnswerMap();
 
@@ -84,9 +85,13 @@ public class ResultActivity extends Activity {
 			count++;
 			
 			resultMap.put(KEY_ID, count + "");
-			resultMap.put(KEY_TITLE, birdInfo.getName());
-			resultMap.put(KEY_ARTIST, answer);
-			resultMap.put(KEY_DURATION,count + "");
+			
+
+			resultMap.put(BIRD_NAME, birdInfo.getName());
+		
+			resultMap.put(ANSWER, answer);
+			resultMap.put(ENGLISH_NAME, birdInfo.getEnglishName());
+			resultMap.put(KEY_COUNT,count + "");
 			resultMap.put(KEY_THUMB_URL, birdInfo.getPictUrl());
 
 			

@@ -30,8 +30,6 @@ import com.example.birdq.utils.ImageLoader;
 
 public class QuizActivity extends Activity {
 
-
-
 	private QuizReceiver receiver;
 
 	List<BirdInfo> birds;
@@ -42,7 +40,8 @@ public class QuizActivity extends Activity {
 
 	public static ResultManager resultManager;
 	
-	
+	public static final String BIRD_INTENT = "Bird.Action";
+
 	static int currentRow = 0;
 
 	RadioButton rb1;
@@ -56,30 +55,16 @@ public class QuizActivity extends Activity {
 		currentRow = 0;
 
 		setContentView(R.layout.activity_quiz);
-		
-		
-		birds = BirdInfoDatabase.birds;
-		
 
-		 SharedPreferences sharedPrefs = PreferenceManager
-	                .getDefaultSharedPreferences(this);
-		
-		 String recordsPerQuiz =  sharedPrefs.getString("noOfRecordsPerQuiz","5");
-		 
-		 int noOfRecordsPerQuiz = Integer.parseInt(recordsPerQuiz);
-		 
-		 List<BirdInfo> newList = new ArrayList<BirdInfo>();
-		 
-		 if ( birds.size() > noOfRecordsPerQuiz ){
-			 
-			 for (int i = 0; i < noOfRecordsPerQuiz; i++) {
-				newList.add(birds.get(i));
-			}
-			 
-			 BirdInfoDatabase.birds = newList;
-			 birds = newList;
-		 }
-		
+		SharedPreferences sharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		String recordsPerQuiz = sharedPrefs
+				.getString("noOfRecordsPerQuiz", "5");
+
+		int noOfRecordsPerQuiz = Integer.parseInt(recordsPerQuiz);
+
+		birds = BirdInfoDatabase.getList(noOfRecordsPerQuiz);
 
 		imageLoader = new ImageLoader(this.getApplicationContext());
 
@@ -88,24 +73,23 @@ public class QuizActivity extends Activity {
 		rb3 = (RadioButton) findViewById(R.id.radioButton3);
 
 		receiver = new QuizReceiver(new Handler(), this); // Create the receiver
-		registerReceiver(receiver, new IntentFilter("some.action")); // Register
+		registerReceiver(receiver, new IntentFilter(BIRD_INTENT)); // Register
 																		// receiver
 
 		resultManager = new ResultManager();
+		
 		resultManager.reset();
-		
-		
+
 		populateRadioButton();
 
 	}
 
-	
 	public void onClickRadioButton(View view) {
 
 		RadioButton radioButton = (RadioButton) findViewById(view.getId());
 		TextView birdIdView = (TextView) findViewById(R.id.birdId);
 
-		Intent i = new Intent("some.action");
+		Intent i = new Intent(BIRD_INTENT);
 
 		i.putExtra("message", radioButton.getText().toString());
 		i.putExtra("birdId", birdIdView.getText());
@@ -118,8 +102,6 @@ public class QuizActivity extends Activity {
 		rb1.setChecked(false);
 		rb2.setChecked(false);
 		rb3.setChecked(false);
-
-		
 
 	}
 
@@ -148,45 +130,49 @@ public class QuizActivity extends Activity {
 		RadioButton rb1 = (RadioButton) findViewById(R.id.radioButton1);
 		RadioButton rb2 = (RadioButton) findViewById(R.id.radioButton2);
 		RadioButton rb3 = (RadioButton) findViewById(R.id.radioButton3);
-		
-		
-		
-		birdIdView.setText(thisInfo.getId());
 
-		
+		birdIdView.setText(thisInfo.getId());
 
 		imageLoader.DisplayImage(thisInfo.getPictUrl(), iView);
 
-		List<String> alternatives = thisInfo.getAlternatives("en");
+		List<String> alternatives = thisInfo.getOptions();
 		
-		String opt1 = alternatives.get(0) ;
-		String opt2 = alternatives.get(1);
+		// Handle if size is not 2.
 		
+		String opt1 = null;
+		String opt2 = null;
 		
-		if ( opt1 == null ) {
+		if ( alternatives != null && alternatives.size() < 2 ) {
+			opt1 = "NA_ERROR";
+			opt2 = opt1;
+		}
+
+		opt1 = alternatives.get(0);
+		opt2 = alternatives.get(1);
+
+		if (opt1 == null) {
 			opt1 = "NA";
 		}
-		if ( opt2 == null ) {
+		if (opt2 == null) {
 			opt2 = "NA";
 		}
-		
-	
-		
+
 		// Lets randomize alternatives
-		
-		Map<String,String> aMap = new HashMap<String,String>();
-		
-		aMap.put(UUID.randomUUID().toString(),opt1 );
-		aMap.put(UUID.randomUUID().toString(),opt2 );
-		aMap.put(UUID.randomUUID().toString(),thisInfo.getName() );
-		
+
+		Map<String, String> aMap = new HashMap<String, String>();
+
+		aMap.put(UUID.randomUUID().toString(), opt1);
+		aMap.put(UUID.randomUUID().toString(), opt2);
+		aMap.put(UUID.randomUUID().toString(), thisInfo.getName());
+
 		List<String> newValues = new ArrayList<String>();
-		
-		for (Iterator<String> iterator = aMap.values().iterator(); iterator.hasNext();) {
+
+		for (Iterator<String> iterator = aMap.values().iterator(); iterator
+				.hasNext();) {
 			String value = (String) iterator.next();
 			newValues.add(value);
 		}
-		
+
 		rb1.setText(newValues.get(0));
 		rb2.setText(newValues.get(1));
 		rb3.setText(newValues.get(2));
@@ -202,18 +188,15 @@ public class QuizActivity extends Activity {
 		return true;
 	}
 
-
 	public static class QuizReceiver extends BroadcastReceiver {
 
 		private final Handler handler;
 		private final QuizActivity thisActivity;
 
-
-
 		public QuizReceiver(Handler handler, QuizActivity activity) {
 			this.handler = handler;
 			thisActivity = activity;
-			
+
 		}
 
 		@Override
@@ -234,7 +217,13 @@ public class QuizActivity extends Activity {
 	public static ResultManager getResultManager() {
 		return resultManager;
 	}
-
-
 	
+
+	@Override
+	protected void onStop()
+	{
+	    unregisterReceiver(receiver);
+	    super.onStop();
+	}
+
 }

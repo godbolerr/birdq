@@ -24,6 +24,10 @@
     <string name="noOfRecordsPerQuizSummary">Number of Birds in Quiz</string>
      <string name="quizLang">Quiz Language </string>
     <string name="quizLangSummary">Language in which quiz is taken</string>
+     <string name="appUrl">Application Url</string>
+    <string name="appUrlSummary">Url to download quiz questions</string>    
+    
+    
     
 
 </resources>

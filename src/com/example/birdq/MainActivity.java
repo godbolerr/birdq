@@ -22,48 +22,36 @@ import com.example.birdq.data.BirdInfoDatabase;
 public class MainActivity extends Activity {
 
 	ProgressDialog myProgressDialog = null;
-	
+
 	private static final int RESULT_SETTINGS = 1;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
 
 	}
 
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings, menu);
-        return true;
-    }
- 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
- 
-        case R.id.menu_settings:
-            Intent i = new Intent(this, UserSettingActivity.class);
-            startActivityForResult(i, RESULT_SETTINGS);
-            break;
- 
-        }
- 
-        return true;
-    }	
-    
-    
-     
-    
-    
-    
-    
-    
-    
-    
-	
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.settings, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+		case R.id.menu_settings:
+			Intent i = new Intent(this, UserSettingActivity.class);
+			startActivityForResult(i, RESULT_SETTINGS);
+			break;
+
+		}
+
+		return true;
+	}
+
 	public void marathiClick(View v) {
 
 		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -102,39 +90,34 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected String doInBackground(String... urls) {
-			
-			
-			
-			 SharedPreferences sharedPrefs = PreferenceManager
-		                .getDefaultSharedPreferences(mActivity);
-			
-			 
-			String lang =  sharedPrefs.getString("quizLang", "en");
-			
-			
-			BirdInfoDatabase
-					.init("http://birdinfoquiz.appspot.com/xml/"+lang+"/getbirds");
 
-			
-			
-	       
-			
-			
-			
-			
-	        return "Retrieved " + BirdInfoDatabase.birds.size();
+			SharedPreferences sharedPrefs = PreferenceManager
+					.getDefaultSharedPreferences(mActivity);
+
+			String lang = sharedPrefs.getString("quizLang", "en");
+
+			String baseUrl = sharedPrefs.getString("appUrl",
+					"http://birdinfoquiz.appspot.com/");
+
+			if (baseUrl == null) {
+				baseUrl = "http://birdinfoquiz.appspot.com/";
+			}
+
+			BirdInfoDatabase.init(baseUrl + "xml/" + lang + "/getbirds");
+
+			return "Success";
 
 		}
 
 		// onPostExecute displays the results of the AsyncTask.
 		@Override
 		protected void onPostExecute(String result) {
-//			Toast.makeText(getBaseContext(), "Message : " + result,
-//					Toast.LENGTH_SHORT).show();
 			Intent nextScreen = new Intent(mActivity, QuizActivity.class);
 
 			startActivity(nextScreen);
 		}
 	}
 	
+	
+
 }

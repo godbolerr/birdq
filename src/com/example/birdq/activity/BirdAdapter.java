@@ -56,9 +56,10 @@ public class BirdAdapter extends BaseAdapter {
         if(convertView==null)
             vi = inflater.inflate(R.drawable.list_row, null);
  
-        TextView title = (TextView)vi.findViewById(R.id.title); // title
-        TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
-        TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
+        TextView birdName = (TextView)vi.findViewById(R.id.birdName); // title
+        TextView answer = (TextView)vi.findViewById(R.id.answer); // artist name
+        TextView englishName = (TextView)vi.findViewById(R.id.englishName); // artist name
+        TextView count = (TextView)vi.findViewById(R.id.count); // duration
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
         ImageView answerStatus =(ImageView)vi.findViewById(R.id.answerStatus); // thumb image
  
@@ -69,10 +70,23 @@ public class BirdAdapter extends BaseAdapter {
        
  
         // Setting all values in listview
-        title.setText(song.get(ResultActivity.KEY_TITLE));
-        artist.setText(song.get(ResultActivity.KEY_ARTIST));
-        duration.setText(song.get(ResultActivity.KEY_DURATION));
+      
+        answer.setText(song.get(ResultActivity.ANSWER));
+        count.setText(song.get(ResultActivity.KEY_COUNT));
         imageLoader.DisplayImage(song.get(ResultActivity.KEY_THUMB_URL), thumb_image);
+        
+        String bName = song.get(ResultActivity.BIRD_NAME);
+        String engName = song.get(ResultActivity.ENGLISH_NAME);
+        
+        
+        birdName.setText(bName);
+        
+        if ( bName != null & bName.equals(engName)) {
+        	englishName.setText("");
+        } else {
+        	englishName.setText("[" + song.get(ResultActivity.ENGLISH_NAME) + "]");
+        }
+        
         
        if ( "right".equals(song.get(ResultActivity.ANSWER_STATUS))){
     	   answerStatus.setImageResource(R.drawable.right);

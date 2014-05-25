@@ -4,12 +4,14 @@
         <item name="5">Five</item>
         <item name="10">Ten</item>
         <item name="15">Fifteen</item>
+        <item name="25">Twenty Five</item>
 
     </string-array>
     <string-array name="noOfRecordsPerQuizValues">
         <item name="5">5</item>
         <item name="10">10</item>
         <item name="15">15</item>
+         <item name="25">25</item>
     </string-array>
     
     <string-array name="quizLang">
@@ -18,8 +20,8 @@
 
     </string-array>
     <string-array name="quizLangValues">
-        <item name="en">English</item>
-        <item name="mr">Marathi</item>
+        <item name="en">en</item>
+        <item name="mr">mr</item>
     </string-array>    
      
 </resources>
