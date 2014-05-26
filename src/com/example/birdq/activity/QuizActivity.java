@@ -205,8 +205,6 @@ public class QuizActivity extends Activity {
 			handler.post(new Runnable() {
 				@Override
 				public void run() {
-					// Toast.makeText(context, "Toast from broadcast receiver",
-					// Toast.LENGTH_SHORT).show();
 					thisActivity.populateRadioButton();
 				}
 			});
