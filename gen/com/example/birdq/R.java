@@ -28,37 +28,38 @@ public final class R {
     }
     public static final class drawable {
         public static final int arrow=0x7f020000;
-        public static final int gradient_bg=0x7f020001;
-        public static final int gradient_bg_hover=0x7f020002;
-        public static final int image_bg=0x7f020003;
-        public static final int list_row=0x7f020004;
-        public static final int list_selector=0x7f020005;
-        public static final int no_image=0x7f020006;
-        public static final int right=0x7f020007;
-        public static final int rihanna=0x7f020008;
-        public static final int wrong=0x7f020009;
+        public static final int bird_icon=0x7f020001;
+        public static final int bird_welcome=0x7f020002;
+        public static final int gradient_bg=0x7f020003;
+        public static final int gradient_bg_hover=0x7f020004;
+        public static final int image_bg=0x7f020005;
+        public static final int list_row=0x7f020006;
+        public static final int list_selector=0x7f020007;
+        public static final int no_image=0x7f020008;
+        public static final int right=0x7f020009;
+        public static final int rihanna=0x7f02000a;
+        public static final int wrong=0x7f02000b;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0012;
-        public static final int answer=0x7f0b000e;
-        public static final int answerStatus=0x7f0b0011;
-        public static final int birdId=0x7f0b0006;
-        public static final int birdName=0x7f0b000d;
-        public static final int count=0x7f0b0010;
-        public static final int displayImage=0x7f0b0005;
-        public static final int englishName=0x7f0b000f;
-        public static final int linearLayout1=0x7f0b0007;
-        public static final int list=0x7f0b0009;
-        public static final int list_image=0x7f0b000c;
-        public static final int marathiBtn=0x7f0b0001;
-        public static final int menu_settings=0x7f0b0013;
-        public static final int radioButton1=0x7f0b0002;
-        public static final int radioButton2=0x7f0b0003;
-        public static final int radioButton3=0x7f0b0004;
-        public static final int restart=0x7f0b000a;
-        public static final int resultText=0x7f0b0008;
-        public static final int textView1=0x7f0b0000;
-        public static final int thumbnail=0x7f0b000b;
+        public static final int action_settings=0x7f0b0011;
+        public static final int answer=0x7f0b000d;
+        public static final int answerStatus=0x7f0b0010;
+        public static final int birdId=0x7f0b0005;
+        public static final int birdName=0x7f0b000c;
+        public static final int count=0x7f0b000f;
+        public static final int displayImage=0x7f0b0004;
+        public static final int englishName=0x7f0b000e;
+        public static final int imageView1=0x7f0b0000;
+        public static final int linearLayout1=0x7f0b0006;
+        public static final int list=0x7f0b0008;
+        public static final int list_image=0x7f0b000b;
+        public static final int menu_settings=0x7f0b0012;
+        public static final int radioButton1=0x7f0b0001;
+        public static final int radioButton2=0x7f0b0002;
+        public static final int radioButton3=0x7f0b0003;
+        public static final int restart=0x7f0b0009;
+        public static final int resultText=0x7f0b0007;
+        public static final int thumbnail=0x7f0b000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -76,29 +77,28 @@ public final class R {
     public static final class string {
         public static final int GuessBird=0x7f080005;
         public static final int action_settings=0x7f080001;
-        public static final int appUrl=0x7f080017;
-        public static final int appUrlSummary=0x7f080018;
+        public static final int appUrl=0x7f080016;
+        public static final int appUrlSummary=0x7f080017;
         public static final int app_name=0x7f080000;
         public static final int english=0x7f080004;
-        public static final int englishStart=0x7f080009;
+        public static final int englishStart=0x7f080008;
         public static final int hello_world=0x7f080002;
         public static final int marathi=0x7f080003;
-        public static final int marathiStart=0x7f080008;
-        public static final int menu_settings=0x7f08000a;
-        public static final int noOfRecordsPerQuiz=0x7f080013;
-        public static final int noOfRecordsPerQuizSummary=0x7f080014;
-        public static final int pref_send_report=0x7f08000b;
-        public static final int pref_send_report_summary=0x7f08000c;
-        public static final int pref_sync_frequency=0x7f08000d;
-        public static final int pref_sync_frequency_summary=0x7f08000e;
-        public static final int pref_update_setting=0x7f080012;
-        public static final int pref_user_name=0x7f08000f;
-        public static final int pref_user_name_summary=0x7f080010;
-        public static final int pref_user_profile=0x7f080011;
-        public static final int quizLang=0x7f080015;
-        public static final int quizLangSummary=0x7f080016;
+        public static final int marathiStart=0x7f080007;
+        public static final int menu_settings=0x7f080009;
+        public static final int noOfRecordsPerQuiz=0x7f080012;
+        public static final int noOfRecordsPerQuizSummary=0x7f080013;
+        public static final int pref_send_report=0x7f08000a;
+        public static final int pref_send_report_summary=0x7f08000b;
+        public static final int pref_sync_frequency=0x7f08000c;
+        public static final int pref_sync_frequency_summary=0x7f08000d;
+        public static final int pref_update_setting=0x7f080011;
+        public static final int pref_user_name=0x7f08000e;
+        public static final int pref_user_name_summary=0x7f08000f;
+        public static final int pref_user_profile=0x7f080010;
+        public static final int quizLang=0x7f080014;
+        public static final int quizLangSummary=0x7f080015;
         public static final int title_activity_main=0x7f080006;
-        public static final int welcome_message=0x7f080007;
     }
     public static final class style {
         /** 

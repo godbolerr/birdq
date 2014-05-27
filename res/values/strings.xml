@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BirdQ</string>
+    <string name="app_name">BirdQuiz</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="marathi">Marathi</string>
     <string name="english">English</string>
     <string name="GuessBird">Guess the Bird</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="welcome_message">Test Your Knowledge of Birds</string>
+    <string name="title_activity_main">BirdQuiz</string>
     <string name="marathiStart">Click here</string>
     <string name="englishStart">इथे क्लिक करा</string>
     <string name="menu_settings">Settings</string>

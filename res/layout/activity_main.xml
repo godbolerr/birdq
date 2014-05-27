@@ -8,23 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".QuizActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="@string/welcome_message" />
-
-    <Button
-        android:id="@+id/marathiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:onClick="marathiClick"
-        android:text="@string/marathiStart" />
+        android:onClick="startQuizOnClick"
+        android:src="@drawable/bird_welcome" />
 
 </RelativeLayout>

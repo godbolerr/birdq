@@ -39,7 +39,7 @@ public class ImageLoader {
         imageViews.put(imageView, url);
         Bitmap bitmap=memoryCache.get(url);
         if(bitmap!=null)
-            imageView.setImageBitmap(bitmap);
+            imageView.setImageBitmap(sharpenImage(bitmap,12));
         else
         {
             queuePhoto(url, imageView);
@@ -159,7 +159,7 @@ public class ImageLoader {
             if(imageViewReused(photoToLoad))
                 return;
             if(bitmap!=null)
-                photoToLoad.imageView.setImageBitmap(bitmap);
+                photoToLoad.imageView.setImageBitmap(sharpenImage(bitmap,12));
             else
                 photoToLoad.imageView.setImageResource(stub_id);
         }
@@ -169,5 +169,21 @@ public class ImageLoader {
         memoryCache.clear();
         fileCache.clear();
     }
+    
+    
+    
+    public Bitmap sharpenImage(Bitmap src, double weight) {
+        // set sharpness configuration
+        double[][] SharpConfig = new double[][] { { 0, -2, 0 },
+        { -2, weight, -2 }, { 0, -2, 0 } };
+        // create convolution matrix instance
+        ImageHelper convMatrix = new ImageHelper(3);
+        // apply configuration
+        convMatrix.applyConfig(SharpConfig);
+        // set weight according to factor
+        convMatrix.Factor = weight - 8;
+        return ImageHelper.computeConvolution3x3(src, convMatrix);
+     }
+
  
 }

@@ -1,5 +1,6 @@
 package com.example.birdq.activity;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -134,6 +136,9 @@ public class QuizActivity extends Activity {
 		birdIdView.setText(thisInfo.getId());
 
 		imageLoader.DisplayImage(thisInfo.getPictUrl(), iView);
+		
+		
+		iView.setImageURI(Uri.parse(thisInfo.getPictUrl()));
 
 		List<String> alternatives = thisInfo.getOptions();
 		
@@ -220,7 +225,16 @@ public class QuizActivity extends Activity {
 	@Override
 	protected void onStop()
 	{
-	    unregisterReceiver(receiver);
+		try {
+			
+			if (receiver != null) {
+				unregisterReceiver(receiver);
+				receiver = null;
+			}
+			
+		} catch (Exception e) {
+		}
+	    
 	    super.onStop();
 	}
 
